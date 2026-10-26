@@ -2,7 +2,7 @@
 
 ## 文档
 
-- [U-Boot 理论与 i.MX6ULL 启动机制详解](docs/U-Boot理论与i.MX6ULL启动详解.md)
-- [U-Boot 编译、烧写与启动实操手册](u-boot/README.md)
+- [U-Boot 编译、烧写与启动笔记](docs/U-Boot编译烧写与启动笔记.md)
+- [Linux 内核编译与 TFTP 启动笔记](docs/Linux内核编译与TFTP启动笔记.md)
 - [文档索引](docs/README.md)
-- [原始课件：uboot.pdf](docs/lessonPdf/uboot.pdf)
+- 原始课件：[uboot.pdf](docs/lessonPdf/uboot.pdf)、[kernel.pdf](docs/lessonPdf/kernel.pdf)
