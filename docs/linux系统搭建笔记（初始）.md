@@ -60,7 +60,7 @@ flowchart LR
     G --> H[应用程序]
 ```
 
-### 3. 网络与目录规划（
+### 3. 网络与目录规划
 
 | 项目 | 值 |
 |---|---|
@@ -69,7 +69,7 @@ flowchart LR
 | 网关 | `192.168.5.1` |
 | 子网掩码 | `255.255.255.0` |
 | 开发板网卡 | `eth0`（FEC1） |
-| TFTP 目录 | `~/linux/tftp/`（放 `zImage`、`imx6ull-alientek-emmc.dtb`） |
+| TFTP 目录 | `~/linux/tftp/`（放 `zImage`、`imx6ull-14x14-emmc-7-1024x600-c.dtb`） |
 | NFS 根目录 | `/home/zr-arm/linux/nfs/rootfs` |
 
 ---
@@ -117,22 +117,22 @@ saveenv
 
 ### 步骤 3：编译内核与设备树
 
-```
-这里的内核用整点原子教程源码编译出来的镜像，设备数用正点原子出厂的源码编译出来的。
-````
+> 内核用正点原子教程源码编译；设备树用正点原子出厂源码编译，产物为 `imx6ull-14x14-emmc-7-1024x600-c.dtb`。
+
 ```bash
-sudo apt update && sudo apt install lzop      
+sudo apt update && sudo apt install lzop
 tar -xjf linux-imx-rel_imx_4.1.15_2.1.1_ga_alientek_v2.2.tar.bz2
 cd linux-imx-rel_imx_4.1.15_2.1.1_ga_alientek_v2.2
-./mx6ull_alientek_emmc.sh                 
+./mx6ull_alientek_emmc.sh
+```
 
 产物与拷贝：
 
 ```bash
-arch/arm/boot/zImage                          # 内核镜像
-arch/arm/boot/dts/imx6ull-alientek-emmc.dtb   # 设备树
+arch/arm/boot/zImage                                    # 内核镜像
+arch/arm/boot/dts/imx6ull-14x14-emmc-7-1024x600-c.dtb   # 设备树
 
-cd arch/arm/boot/dts && cp imx6ull-alientek-emmc.dtb ~/linux/tftp/
+cd arch/arm/boot/dts && cp imx6ull-14x14-emmc-7-1024x600-c.dtb ~/linux/tftp/
 cd ..                 && cp zImage ~/linux/tftp/
 ```
 
@@ -160,7 +160,7 @@ sudo exportfs -arv            # 或 sudo systemctl restart nfs-kernel-server
 ### 步骤 5：设置 bootcmd 与 bootargs
 
 ```text
-setenv bootcmd 'tftp 80800000 zImage;tftp 83000000 imx6ull-alientek-emmc.dtb;bootz 80800000 - 83000000'
+setenv bootcmd 'tftp 80800000 zImage;tftp 83000000 imx6ull-14x14-emmc-7-1024x600-c.dtb;bootz 80800000 - 83000000'
 
 setenv bootargs 'console=ttymxc0,115200 root=/dev/nfs nfsroot=192.168.5.100:/home/zr-arm/linux/nfs/rootfs,v3,tcp rw ip=192.168.5.101:192.168.5.100:192.168.5.1:255.255.255.0::eth0:off'
 
@@ -195,7 +195,7 @@ saveenv
 
 ```text
 tftp 80800000 zImage                       # 下载内核到 0x80800000
-tftp 83000000 imx6ull-alientek-emmc.dtb    # 下载设备树到 0x83000000
+tftp 83000000 imx6ull-14x14-emmc-7-1024x600-c.dtb   # 下载设备树到 0x83000000
 bootz 80800000 - 83000000                  # 启动内核
 ```
 
