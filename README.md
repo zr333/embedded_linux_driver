@@ -2,7 +2,5 @@
 
 ## 文档
 
-- [U-Boot 编译、烧写与启动笔记](docs/U-Boot编译烧写与启动笔记.md)
-- [Linux 内核编译与 TFTP 启动笔记](docs/Linux内核编译与TFTP启动笔记.md)
-- [文档索引](docs/README.md)
-- 原始课件：[uboot.pdf](docs/lessonPdf/uboot.pdf)、[kernel.pdf](docs/lessonPdf/kernel.pdf)
+- [I.MX6ULL 系统搭建笔记（U-Boot + Kernel + rootfs）](<docs/linux系统搭建笔记（初始）.md>)
+- 原始课件：[uboot.pdf](docs/lessonPdf/uboot.pdf)、[kernel.pdf](docs/lessonPdf/kernel.pdf)、[根文件系统移植.pdf](<docs/lessonPdf/根文件系统移植.pdf>)
