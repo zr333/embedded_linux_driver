@@ -4,9 +4,28 @@
 
 ## 1. 编译设备树并拷到 TFTP
 
+编 dtb 只需要一个能做**预处理**的 gcc（用来展开 dts 里的 `#include` / `#define`），
+真正把 dts 转成 dtb 的是内核自带的 `scripts/dtc/dtc`（宿主机程序），
+因此任选一种工具链写法都可以，结果完全一致：
+
+**方式 A：直接指定通用交叉编译器**
+
 ```sh
-cd ~/linux/linux-imx6ull
-make imx6ull-14x14-emmc-7-1024x600-c.dtb
+cd ~/linux/kernel_complete
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- dtbs
+```
+
+**方式 B：使用厂商 SDK 的工具链（先 source 环境，再省略 CROSS_COMPILE）**
+
+```sh
+source /opt/fsl-imx-x11/4.1.15-2.1.0/environment-setup-cortexa7hf-neon-poky-linux-gnueabi
+make dtbs
+```
+
+
+编译完成后把 dtb 拷到 TFTP 目录，供开发板下载：
+
+```sh
 cp arch/arm/boot/dts/imx6ull-14x14-emmc-7-1024x600-c.dtb ~/linux/tftp/
 ```
 
