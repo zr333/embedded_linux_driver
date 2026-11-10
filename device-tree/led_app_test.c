@@ -1,8 +1,6 @@
 /* ---------------------------------------------------------------- 头文件 -- */
 #include <fcntl.h>     /* open / O_WRONLY                              */
 #include <stdio.h>     /* perror                                       */
-#include <sys/stat.h>  /* 文件属性相关(本程序未直接使用, 保留习惯写法)  */
-#include <sys/types.h> /* 基本类型定义                                 */
 #include <unistd.h>    /* write / sleep / close                        */
 
 /*
