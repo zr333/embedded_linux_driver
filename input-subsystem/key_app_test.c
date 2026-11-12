@@ -32,13 +32,9 @@ int main(int argc, char *argv[])
      * ------------------------------------------------------------------ */
     if (argc < 2)
     {
-        /* 参数不够,打印用法提示后退出。
-         * 用 fprintf(stderr, ...) 而不是 printf,是 POSIX 惯例:
-         * 错误信息走"标准错误",即使用户把标准输出重定向到文件,
-         * 提示信息依然会显示在终端上。
-         * argv[0] 就是程序自身的名字,这样提示语更通用。 */
+     
         fprintf(stderr, "Usage: %s <input_event_device>\n", argv[0]);
-        exit(-1); /* 退出码 -1,进程实际返回给 shell 的是 255(只取低 8 位) */
+        exit(-1); 
     }
 
     /* --------------------------------------------------------------------
@@ -51,9 +47,7 @@ int main(int argc, char *argv[])
     int fd = open(argv[1], O_RDONLY);
     if (fd < 0)
     {
-        /* perror 会自动在提示语后面追加 ": " + errno 对应的错误描述,
-         * 例如 "Failed to open input event device: No such file or directory"
-         * 或 "...: Permission denied",便于快速定位问题。 */
+        
         perror("Failed to open input event device");
         exit(-1);
     }
